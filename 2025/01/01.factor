@@ -30,10 +30,7 @@ IN: everybodycodes.2025.01
 
 : part2 ( -- name )
   2 get-input
-
-  *[ <circular> | sum ]
-
-  nth-of ;
+  *[ <circular> | sum ] nth-of ;
 
 : part3 ( -- name )
   3 get-input
