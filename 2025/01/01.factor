@@ -31,9 +31,7 @@ IN: everybodycodes.2025.01
 : part2 ( -- name )
   2 get-input
 
-  [ <circular> ] dip
-  0 swap
-  [ + ] each
+  *[ <circular> | sum ]
 
   nth-of ;
 
