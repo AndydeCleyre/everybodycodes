@@ -19,15 +19,12 @@ IN: everybodycodes.2025.01
 
   str-steps>int-steps ;
 
-: n-or-valid-index ( n max-index -- n' )
-  [ 0 max ] dip min ;
-
 : part1 ( -- name )
   1 get-input
 
   0 swap
   pick length 1 -
-  '[ + _ n-or-valid-index ] each
+  '[ + 0 _ clamp ] each
 
   nth-of ;
 
