@@ -37,6 +37,7 @@ TUPLE: point coords result ;
   dup result>> dup c*
   { 100_000 100_000 } c/
   over coords>> v+
+  ! TODO: DRY with part1
 
   dup [ -1_000_000 1_000_000 between? ] all?
   [ drop f ] unless >>result ;
@@ -57,6 +58,8 @@ TUPLE: point coords result ;
   '[ reverse { step step } v* _ v+ <point> ] matrix-map
 
   [ engrave? ] matrix-map
+  ! visualize:
+  ! dup [ [ f = " " "." ? ] map-concat ] map [ print ] each
   concat [ ] count ;
 
 : part2 ( -- #points )
