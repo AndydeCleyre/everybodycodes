@@ -1,7 +1,7 @@
-USING: accessors arrays combinators.syntax interpolate
-io.encodings.utf8 io.files kernel math math.functions
-math.matrices math.order math.parser math.vectors sequences
-splitting sequences.extras ;
+USING: accessors arrays combinators.syntax
+concurrency.combinators interpolate io.encodings.utf8 io.files
+kernel math math.functions math.matrices math.order math.parser
+math.vectors sequences splitting ;
 IN: everybodycodes.2025.02
 
 : get-input ( part# -- c )
@@ -56,10 +56,11 @@ TUPLE: point coords result ;
   '[ reverse { step step } v* _ v+ <point> ] matrix-map ;
 
 : (part2) ( size -- #points )
-  part2-matrix [ engrave? ] matrix-map
-  ! visualize:
-  ! dup [ [ f = " " "." ? ] map-concat ] map [ print ] each
-  [ sift ] map-concat length ;
+  part2-matrix
+  [ [ engrave? ] parallel-filter ] parallel-map
+  [ length ] map-sum ;
+  ! This parallel version isn't actually any faster than the previous one.
+  ! It may even be a few seconds slower.
 
 : part2 ( -- #points )
   101 (part2) ;
