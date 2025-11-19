@@ -8,16 +8,19 @@ IN: everybodycodes.2025.04
   utf8 file-lines
   [ "|" split [ string>number ] map ] map ;
 
-: gear-ratio ( gears -- ratio )
-  2 clump [ first2 *[ last | first ] / ] map-product ;
+: gear-ratio-simple ( gears -- ratio )
+  &[ first | last ] *[ first | last ] / ;
 
 : part1 ( -- #turns )
-  1 get-input gear-ratio
+  1 get-input gear-ratio-simple
   2025 * truncate ;
 
 : part2 ( -- #turns )
-  2 get-input gear-ratio
+  2 get-input gear-ratio-simple
   10_000_000_000_000 swap / ceiling ;
+
+: gear-ratio ( gears -- ratio )
+  2 clump [ first2 *[ last | first ] / ] map-product ;
 
 : part3 ( -- result )
   3 get-input gear-ratio
