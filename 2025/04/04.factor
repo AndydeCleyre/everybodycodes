@@ -1,5 +1,5 @@
 USING: combinators.syntax grouping interpolate io.encodings.utf8
-io.files kernel math math.functions math.parser sequences
+io.files math math.functions math.parser sequences
 sequences.extras splitting ;
 IN: everybodycodes.2025.04
 
@@ -16,8 +16,9 @@ IN: everybodycodes.2025.04
   2025 * truncate ;
 
 : part2 ( -- #turns )
+  10_000_000_000_000
   2 get-input gear-ratio-simple
-  10_000_000_000_000 swap / ceiling ;
+  / ceiling ;
 
 : gear-ratio ( gears -- ratio )
   2 clump [ first2 *[ last | first ] / ] map-product ;
