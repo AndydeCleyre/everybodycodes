@@ -16,7 +16,7 @@ IN: everybodycodes.2025.04
   2025 * truncate ;
 
 : part2 ( -- #turns )
-  10_000_000_000_000
+  10,000,000,000,000
   2 get-input gear-ratio-simple
   / ceiling ;
 

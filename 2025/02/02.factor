@@ -38,8 +38,8 @@ TUPLE: point coords result ;
   { 0 0 } >>result ;
 
 : check-point-step ( point -- point'/f )
-  dup &[ coords>> | result>> ] 100_000 part1-step
-  dup [ -1_000_000 1_000_000 between? ] all?
+  dup &[ coords>> | result>> ] 100,000 part1-step
+  dup [ -1,000,000 1,000,000 between? ] all?
   [ >>result ] [ 2drop f ] if ;
 
 : engrave? ( point -- ? )
@@ -50,7 +50,7 @@ TUPLE: point coords result ;
   ] while nip >boolean ;
 
 :: part2-matrix ( size -- matrix )
-  1_000 size 1 - / :> step
+  1,000 size 1 - / :> step
   size <cartesian-square-indices>
   2 get-input
   '[ reverse { step step } v* _ v+ <point> ] matrix-map ;
@@ -67,4 +67,4 @@ TUPLE: point coords result ;
 
 : part3 ( -- #points )
   ! This works but is slow enough to confirm there's a much better way.
-  1_001 (part2) ;
+  1,001 (part2) ;
