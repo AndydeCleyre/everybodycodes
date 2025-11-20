@@ -1,5 +1,5 @@
 USING: accessors arrays combinators.syntax
-concurrency.combinators interpolate io.encodings.utf8 io.files
+interpolate io.encodings.utf8 io.files
 kernel math math.functions math.matrices math.order math.parser
 math.vectors sequences splitting ;
 IN: everybodycodes.2025.02
@@ -57,10 +57,7 @@ TUPLE: point coords result ;
 
 : (part2) ( size -- #points )
   part2-matrix
-  [ [ engrave? ] parallel-filter ] parallel-map
-  [ length ] map-sum ;
-  ! This parallel version isn't actually any faster than the previous one.
-  ! It may even be a few seconds slower.
+  [ [ engrave? ] count ] map-sum ;
 
 : part2 ( -- #points )
   101 (part2) ;
