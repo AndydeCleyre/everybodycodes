@@ -6,7 +6,7 @@ IN: everybodycodes.2025.05
 
 TUPLE: sword id nums quality scores ;
 : <sword> ( id nums -- sword )
-  sword new swap >>nums swap >>id ;
+  sword new &[ nums<< | id<< | ] ;
 
 : get-input ( part# -- swords )
   I"vocab:everybodycodes/2025/05/everybody_codes_e2025_q05_p${}.txt"
