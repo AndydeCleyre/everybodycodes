@@ -1,7 +1,7 @@
 USING: accessors arrays combinators combinators.syntax
 interpolate io.encodings.utf8 io.files kernel math math.order
-math.parser sequences sequences.extras sorting.specification
-splitting ;
+math.parser math.statistics sequences sequences.extras
+sorting.specification splitting ;
 IN: everybodycodes.2025.05
 
 TUPLE: sword id nums quality scores ;
@@ -48,7 +48,7 @@ TUPLE: rung left center right ;
 
 : part2 ( -- quality-difference )
   2 get-input [ sword>quality ] map
-  &[ maximum | minimum ] - ;
+  minmax swap - ;
 
 : rung>score ( rung -- n )
   &[ left>> | center>> | right>> ]
