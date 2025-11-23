@@ -1,7 +1,7 @@
-USING: accessors arrays combinators.syntax
-interpolate io.encodings.utf8 io.files
-kernel math math.functions math.matrices math.order math.parser
-math.vectors sequences splitting ;
+USING: accessors arrays combinators.extras combinators.syntax
+interpolate io.encodings.utf8 io.files kernel math
+math.functions math.matrices math.order math.parser math.vectors
+sequences splitting ;
 IN: everybodycodes.2025.02
 
 : get-input ( part# -- c )
@@ -28,8 +28,7 @@ IN: everybodycodes.2025.02
 
 : part1 ( -- result )
   1 get-input { 0 0 }
-  [ dupd 10 part1-step ]
-  3 swap times nip ;
+  [ dupd 10 part1-step ] thrice nip ;
 
 TUPLE: point coords result ;
 : <point> ( coords -- point )
