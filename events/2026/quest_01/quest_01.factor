@@ -24,8 +24,11 @@ MEMO: #cones-more-needed-1 ( #enchanted-cones -- #new-cones )
 : 4ish-ceiling ( n -- n' )
   [ dup 4 divisor? ] [ 1 + ] until ;
 
+: floor-and-difference ( #enchanted-cones quot: ( #enchanted-cones -- #total-needed ) -- #new-cones )
+  '[ dup 8 <= [ drop 8 ] _ if ] keep - ; inline
+
 MEMO: #cones-more-needed-2 ( #enchanted-cones -- #new-cones )
-  [ dup 8 <= [ drop 8 ] [ 4ish-ceiling ] if ] keep - ;
+  [ 4ish-ceiling ] floor-and-difference ;
 
 : part-2 ( -- #new-cones )
   2 initial-outposts
@@ -38,7 +41,7 @@ MEMO: #cones-more-needed-2 ( #enchanted-cones -- #new-cones )
   sq 1 - ;
 
 MEMO: #cones-more-needed-3 ( #enchanted-cones -- #new-cones )
-  [ dup 8 <= [ drop 8 ] [ #cones-total-needed-3 ] if ] keep - ;
+  [ #cones-total-needed-3 ] floor-and-difference ;
 
 : part-3 ( -- #new-cones )
   3 initial-outposts
