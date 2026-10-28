@@ -12,8 +12,8 @@ IN: everybodycodes.events.2026.quest_02
   " " split
   [
     first3 swap CHAR: < = [ swap ] when
-    2 @[ 1string ] 2array
-  ] map ;
+    2 @[ 1string ]
+  ] map>alist ;
 
 : compare-alloys ( a b comparison-pairs -- <=> )
   2over 2array '[ _ set= ] find nip
