@@ -1,18 +1,19 @@
-USING: arrays assocs assocs.extras combinators.syntax
-interpolate io.encodings.utf8 io.files kernel math.order
-math.parser path-finding sequences sets sorting splitting
-strings ;
+USING: arrays assocs.extras combinators.syntax interpolate
+io.encodings.utf8 io.files kernel math.order math.parser
+path-finding sequences sets sorting splitting strings ;
 IN: everybodycodes.events.2026.quest_02
 
 : get-input ( part# -- notes )
   I"vocab:everybodycodes/events/2026/quest_02/input/input_p${}.txt"
   utf8 file-contents ;
 
+: str>pair ( str -- sorted-pair )
+    first3 swap
+    CHAR: < = [ swap ] when
+    2 @[ 1string ] 2array ;
+
 : line>comparisons ( str -- pairs )
-  " " split [
-    first3 swap CHAR: < = [ swap ] when
-    2 @[ 1string ]
-  ] map>alist ;
+  " " split [ str>pair ] map ;
 
 : compare-alloys ( a b comparison-pairs -- <=> )
   [ 2array ] dip
