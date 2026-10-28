@@ -8,9 +8,9 @@ IN: everybodycodes.events.2026.quest_02
   utf8 file-contents ;
 
 : str>pair ( str -- sorted-pair )
-    first3 swap
-    CHAR: < = [ swap ] when
-    2 @[ 1string ] 2array ;
+  first3 swap
+  CHAR: < = [ swap ] when
+  2 @[ 1string ] 2array ;
 
 : line>comparisons ( str -- pairs )
   " " split [ str>pair ] map ;
