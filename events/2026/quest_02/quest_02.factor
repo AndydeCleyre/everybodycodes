@@ -9,8 +9,7 @@ IN: everybodycodes.events.2026.quest_02
   utf8 file-contents ;
 
 : line>comparisons ( str -- pairs )
-  " " split
-  [
+  " " split [
     first3 swap CHAR: < = [ swap ] when
     2 @[ 1string ]
   ] map>alist ;
