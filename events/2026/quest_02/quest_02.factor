@@ -1,5 +1,5 @@
 USING: arrays assocs combinators.extras combinators.syntax
-interpolate io.encodings.utf8 io.files kernel math math.order
+interpolate io.encodings.utf8 io.files kernel math.order
 math.parser path-finding sequences sets sorting splitting
 strings ;
 IN: everybodycodes.events.2026.quest_02
@@ -16,9 +16,8 @@ IN: everybodycodes.events.2026.quest_02
   ] map>alist ;
 
 : compare-alloys ( a b comparison-pairs -- <=> )
-  2over 2array '[ _ set= ] find nip
-  index nip
-  zero? +gt+ +lt+ ? ;
+  [ 2array ] dip
+  in? +lt+ +gt+ ? ;
 
 : line>sorted-alloys ( str -- alloys )
   line>comparisons
