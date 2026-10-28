@@ -1,4 +1,4 @@
-USING: arrays assocs combinators.extras combinators.syntax
+USING: arrays assocs assocs.extras combinators.syntax
 interpolate io.encodings.utf8 io.files kernel math.order
 math.parser path-finding sequences sets sorting splitting
 strings ;
@@ -29,13 +29,8 @@ IN: everybodycodes.events.2026.quest_02
 : part-1 ( -- checksum )
   1 [ line>sorted-alloys ] checksum ;
 
-: forward-neighbors ( pairs key -- forward-neighbors )
-  '[ _ = ] filter-keys values ;
-
 : comparisons>astar ( pairs -- astar )
-  dup keys members
-  [ [ forward-neighbors ] keep-under ] with map>alist
-  <bfs> ;
+  [ drop ] collect-value-by <bfs> ;
 
 : compare-alloys-2 ( a b astar -- <=> )
   find-path +lt+ +gt+ ? ;
