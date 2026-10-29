@@ -3,9 +3,9 @@ io.encodings.utf8 io.files kernel math.order math.parser
 path-finding sequences sets sorting splitting strings ;
 IN: everybodycodes.events.2026.quest_02
 
-: get-input ( part# -- notes )
+: get-input ( part# -- lines )
   I"vocab:everybodycodes/events/2026/quest_02/input/input_p${}.txt"
-  utf8 file-contents ;
+  utf8 file-lines ;
 
 : str>pair ( str -- sorted-pair )
   first3 swap
@@ -24,7 +24,7 @@ IN: everybodycodes.events.2026.quest_02
   &[ concat members | '[ _ compare-alloys ] ] sort-with ;
 
 : checksum ( part# line>sorted-alloys-quot -- checksum )
-  [ get-input split-lines ] dip
+  [ get-input ] dip
   '[ @ concat string>number ] map-sum ; inline
 
 : part-1 ( -- checksum )
