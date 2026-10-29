@@ -1,5 +1,5 @@
 USING: circular combinators.extras combinators.syntax
-interpolate io.encodings.utf8 io.files kernel lists lists.lazy
+interpolate io.encodings.utf8 io.files kernel lists lists.circular lists.lazy
 math math.functions math.parser math.vectors sequences splitting ;
 IN: everybodycodes.events.2026.quest_03
 
